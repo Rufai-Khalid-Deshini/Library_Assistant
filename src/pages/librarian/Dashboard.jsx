@@ -10,13 +10,13 @@ const Dashboard = () => {
 
     useEffect(() => {
         axios
-            .get('http://localhost:5555/users/me', { withCredentials: true})
+            .get('https://lib-backend-i000.onrender.com/users/me', { withCredentials: true})
             .then((res) => {
                 const data = {
                     id: res.data.user.id
                 }
                 axios
-                    .post('http://localhost:5555/users/get-info', data)
+                    .post('https://lib-backend-i000.onrender.com/users/get-info', data)
                     .then(res => {
                         if(res.data.role != "admin") {
                             alert("Access denied");

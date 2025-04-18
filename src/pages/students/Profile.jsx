@@ -27,13 +27,13 @@ const Profile = () => {
 
     useEffect(() => {
         axios
-            .get('http://localhost:5555/users/me', { withCredentials: true})
+            .get('https://lib-backend-i000.onrender.com/users/me', { withCredentials: true})
             .then((res) => {
                 const data = {
                     id: res.data.user.id
                 }
                 axios
-                    .post('http://localhost:5555/users/get-info', data)
+                    .post('https://lib-backend-i000.onrender.com/users/get-info', data)
                     .then(res => {
                         setUser(res.data);
                     })
@@ -43,7 +43,7 @@ const Profile = () => {
 
     const logout = async () => {
         axios
-        .post('http://localhost:5555/users/logout', {}, { withCredentials: true })
+        .post('https://lib-backend-i000.onrender.com/users/logout', {}, { withCredentials: true })
         .then(res => {
             location.href = "/";
         });
@@ -60,7 +60,7 @@ const Profile = () => {
             const formData = new FormData();
             formData.append("image", image);
             axios
-                .put(`http://localhost:5555/users/update-picture/${user._id}`, formData)
+                .put(`https://lib-backend-i000.onrender.com/users/update-picture/${user._id}`, formData)
                 .then(res => {
                     setUpdate(false);
                     setSnackar({
@@ -91,7 +91,7 @@ const Profile = () => {
                     <div className='font-[Montserrat] flex flex-col items-center justify-center gap-2 p-4'>
                         {user.picture && (
                             <div className='flex flex-col items-center justify-center gap-2'>
-                                <img src={`http://localhost:5555/pictures/${user.picture}`} alt={user.username} className='w-52 h-52 rounded-full' style={{ objectFit: "cover"}} />
+                                <img src={`https://lib-backend-i000.onrender.com/pictures/${user.picture}`} alt={user.username} className='w-52 h-52 rounded-full' style={{ objectFit: "cover"}} />
                                 <button className='flex flex-row items-center justify-center gap-2 p-1 bg-sky-600 rounded-lg text-white' onClick={() => setUpdate(true)}><MdEdit />Edit Picture</button>
                             </div>
                         )}

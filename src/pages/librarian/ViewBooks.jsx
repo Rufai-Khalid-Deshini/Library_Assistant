@@ -15,7 +15,7 @@ const ViewBooks = () => {
         setLoading(true);
 
         axios
-            .get('http://localhost:5555/books')
+            .get('https://lib-backend-i000.onrender.com/books')
             .then((res) => {
                 setBooks(res.data);
                 setLoading(false);
@@ -31,7 +31,7 @@ const ViewBooks = () => {
         if(conf) {
             setLoading(true);
             axios
-                .delete(`http://localhost:5555/books/${key}`)
+                .delete(`https://lib-backend-i000.onrender.com/books/${key}`)
                 .then(res => {
                     alert(`${res.data.message}`);
                     location.reload();

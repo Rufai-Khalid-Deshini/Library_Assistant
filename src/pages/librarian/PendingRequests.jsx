@@ -15,7 +15,7 @@ const PendingRequests = () => {
     useEffect(() => {
         setLoading(true)
         axios
-            .get('http://localhost:5555/admin/pending')
+            .get('https://lib-backend-i000.onrender.com/admin/pending')
             .then(res => {
                 setInfo(res.data);
                 setLoading(false);
@@ -36,7 +36,7 @@ const PendingRequests = () => {
         };
 
         axios
-            .put(`http://localhost:5555/admin/send-notif/${id}`, data)
+            .put(`https://lib-backend-i000.onrender.com/admin/send-notif/${id}`, data)
             .then(res => {
                 alert(res.data.message)
             })
@@ -45,7 +45,7 @@ const PendingRequests = () => {
             });
 
         axios
-            .delete(`http://localhost:5555/admin/remove/${pId}`)
+            .delete(`https://lib-backend-i000.onrender.com/admin/remove/${pId}`)
             .catch(err => {
                 if(err.response) {
                     alert(err.response.data.message);
@@ -60,7 +60,7 @@ const PendingRequests = () => {
             dueDate: due
         };
         axios
-            .post('http://localhost:5555/admin/add-transaction', transaction)
+            .post('https://lib-backend-i000.onrender.com/admin/add-transaction', transaction)
             .then(res => {
                 alert(res.data.message)
                 setLoading2(false);
@@ -86,7 +86,7 @@ const PendingRequests = () => {
         };
 
         axios
-            .put(`http://localhost:5555/admin/send-notif/${id}`, data)
+            .put(`https://lib-backend-i000.onrender.com/admin/send-notif/${id}`, data)
             .then(res => {
                 alert(res.data.message)
             })
@@ -95,7 +95,7 @@ const PendingRequests = () => {
             });
 
         axios
-            .delete(`http://localhost:5555/admin/remove/${pId}`)
+            .delete(`https://lib-backend-i000.onrender.com/admin/remove/${pId}`)
             .then(res => {
                 setLoading2(false);
             })
@@ -128,7 +128,7 @@ const PendingRequests = () => {
                             {info.map((item, i) => {
                                 return (
                                     <div className='flex flex-col sm:flex-row items-center justify-start gap-3 bg-white w-11/12 rounded-md shadow-md mx-auto p-2 sm:p-0 my-5'>
-                                        <img src={`http://localhost:5555/pictures/${item.user.picture}`} alt={item.user.username} className='w-44 h-52 sm:h-full' style={{ objectFit: "cover"}} />
+                                        <img src={`https://lib-backend-i000.onrender.com/pictures/${item.user.picture}`} alt={item.user.username} className='w-44 h-52 sm:h-full' style={{ objectFit: "cover"}} />
                                         {/* <div className='w-48 h-full bg-lime-500'></div> */}
                                         <div className="flex flex-col items-center sm:items-start justify-center gap-1">
                                             <div className='flex flex-col sm:flex-row sm:flex-wrap items-center justify-start gap-1'>

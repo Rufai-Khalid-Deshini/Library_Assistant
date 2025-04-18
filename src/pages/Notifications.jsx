@@ -17,7 +17,7 @@ const Notifications = () => {
         setLoading(true);
 
         axios
-            .get('http://localhost:5555/users/me', { withCredentials: true })
+            .get('https://lib-backend-i000.onrender.com/users/me', { withCredentials: true })
             .then(res => {
                 setId(res.data.user.id)
             })
@@ -26,7 +26,7 @@ const Notifications = () => {
             })
 
         axios
-            .post('http://localhost:5555/users/get-info', { id: id })
+            .post('https://lib-backend-i000.onrender.com/users/get-info', { id: id })
             .then(res => {
                 setNotifs(res.data.notifications);
                 setLoading(false);

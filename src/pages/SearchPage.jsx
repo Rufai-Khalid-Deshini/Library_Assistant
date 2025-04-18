@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import Loading from '../components/Loading';
 import axios from 'axios';
+import BookDisplay from '../components/BookDisplay';
+import { Link } from 'react-router-dom';
 
 const SearchPage = () => {
 
@@ -13,12 +15,19 @@ const SearchPage = () => {
         setLoading(true);
 
         axios
-            .get(`http://localhost:5555/admin/search/${searchTerm}`)
+            .get(`https://lib-backend-i000.onrender.com/admin/search/${searchTerm.toLowerCase()}`)
             .then(res => {
                 setResults(res.data);
+                setLoading(false)
+                console.log(res)
             })
             .catch(err => {
-                alert(err)
+                if(err.response) {
+                    alert(err.response.data.message)
+                }else {
+                    alert(err)
+                }
+                setLoading(false)
             })
 
     }
@@ -34,12 +43,16 @@ const SearchPage = () => {
                 <Loading />
             )}
 
+            {/* {!loading &&  (
+                <p>{results.response.data.message}</p>
+            )} */}
+
             {!loading && (
                 results.map((result, i) => {
                     return (
-                        <div key={i}>
-                            <p>{result}</p>
-                        </div>
+                        <Link to={`/students/book/${result._id}`} className='w-full'>
+                            <BookDisplay key={result._id} {...result} id={result._id} ye={result.ye} />
+                        </Link>
                     )
                 })
             )}

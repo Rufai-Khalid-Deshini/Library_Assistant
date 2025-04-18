@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import Loading from '../../components/Loading';
 import { FaCaretLeft, FaCheck, FaRegStar, FaStar } from 'react-icons/fa'
-import Alert from '@mui/material/Alert'
 import SnackbarComponent from '../../components/SnackbarComponent';
 
 const ViewBook = () => {
@@ -47,7 +46,7 @@ const ViewBook = () => {
         setLoading(true);
 
         axios
-            .get('http://localhost:5555/users/me', { withCredentials: true})
+            .get('https://lib-backend-i000.onrender.com/users/me', { withCredentials: true})
             .then(res => {
                 setUserId(res.data.user.id);
             })
@@ -64,7 +63,7 @@ const ViewBook = () => {
             })
 
         axios
-            .get(`http://localhost:5555/books/find/${id}`)
+            .get(`https://lib-backend-i000.onrender.com/books/find/${id}`)
             .then((res) => {
                 setBook(res.data);
                 setRatings(res.data.rating)
@@ -131,7 +130,7 @@ const ViewBook = () => {
                 date: date
             }
             axios
-                .post('http://localhost:5555/users/send-request', data)
+                .post('https://lib-backend-i000.onrender.com/users/send-request', data)
                 .then(res => {
                     alert(res.data.message)
                 })
@@ -162,7 +161,7 @@ const ViewBook = () => {
             rate: rating
         }
         axios
-            .put(`http://localhost:5555/books/rate/${id}`, item)
+            .put(`https://lib-backend-i000.onrender.com/books/rate/${id}`, item)
             .then(res => {
                 alert(res.data.message + "\nRated: " + rating + " stars");
                 setLoading2(false);
@@ -182,8 +181,8 @@ const ViewBook = () => {
             {!loading && (
                 <>
                     <div className='flex flex-col items-center justify-center mt-3 bg-white w-11/12 m-auto p-4 rounded-md'>
-                        <a href={`http://localhost:5555/uploads/${book.image}`}>
-                            <img src={`http://localhost:5555/uploads/${book.image}`} alt={book.title} className='w-28 h-36 mr-2' />
+                        <a href={`https://lib-backend-i000.onrender.com/uploads/${book.image}`}>
+                            <img src={`https://lib-backend-i000.onrender.com/uploads/${book.image}`} alt={book.title} className='w-28 h-36 mr-2' />
                         </a>
 
                         <SnackbarComponent

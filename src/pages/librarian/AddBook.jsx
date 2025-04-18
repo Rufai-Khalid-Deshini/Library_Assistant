@@ -18,13 +18,13 @@ const AddBook = () => {
 
     useEffect(() => {
         axios
-            .get('http://localhost:5555/users/me', { withCredentials: true})
+            .get('https://lib-backend-i000.onrender.com/users/me', { withCredentials: true})
             .then((res) => {
                 const data = {
                     id: res.data.user.id
                 }
                 axios
-                    .post('http://localhost:5555/users/get-info', data)
+                    .post('https://lib-backend-i000.onrender.com/users/get-info', data)
                     .then(res => {
                         if(res.data.role != "admin") {
                             alert("Access denied");
@@ -39,7 +39,7 @@ const AddBook = () => {
         setLoading(true);
 
         const formData = new FormData();
-        formData.append("title", title);
+        formData.append("title", title.toLowerCase());
         formData.append("author", author);
         formData.append("description", description);
         formData.append("category", category);
@@ -47,7 +47,7 @@ const AddBook = () => {
         formData.append("instock", inStock);
 
         axios
-            .post("http://localhost:5555/admin/upload", formData)
+            .post("https://lib-backend-i000.onrender.com/admin/upload", formData)
             .then((res) => {
                 alert("Book uploaded successfully");
                 setLoading(false);

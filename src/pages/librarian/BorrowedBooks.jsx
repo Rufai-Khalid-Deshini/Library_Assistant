@@ -24,7 +24,7 @@ const BorrowedBooks = () => {
     useEffect(() => {
         setLoading(true);
         axios
-            .get('http://localhost:5555/transaction')
+            .get('https://lib-backend-i000.onrender.com/transaction')
             .then(res => {
                 setData(res.data);
                 setLoading(false);
@@ -43,7 +43,7 @@ const BorrowedBooks = () => {
         setLoading2(true);
 
         axios
-            .put(`http://localhost:5555/transaction/${id}`)
+            .put(`https://lib-backend-i000.onrender.com/transaction/${id}`)
             .then(res => {
                 setSnackbar({
                     open: true,
@@ -64,7 +64,7 @@ const BorrowedBooks = () => {
                 transactionId: id
             }
             axios
-                .put(`http://localhost:5555/transaction/add-to-borrowed/${userId}`, transId)
+                .put(`https://lib-backend-i000.onrender.com/transaction/add-to-borrowed/${userId}`, transId)
                 .then(res => {
                     setLoading2(false);
                     setSnackbar({
@@ -110,7 +110,7 @@ const BorrowedBooks = () => {
                             <>
                                 {item.status == "borrowed" && (
                                     <div key={item._id} className='bg-white shadow w-11/12 mx-auto mb-3 rounded flex flex-col sm:flex-row items-center justify-center sm:justify-start sm:gap-2 p-2 sm:p-0 font-[Montserrat]'>
-                                        <img src={`http://localhost:5555/uploads/${item.bookId.image}`} alt={item.username} className='w-32 h-40' style={{ objectFit: "cover"}} />
+                                        <img src={`https://lib-backend-i000.onrender.com/uploads/${item.bookId.image}`} alt={item.username} className='w-32 h-40' style={{ objectFit: "cover"}} />
                                         <div className='sm:flex sm:flex-col sm:items-start sm:justify-center'>
                                             <div className='flex flex-col sm:flex-row items-center justify-center sm:gap-2'>
                                                 <p className='text-lg font-bold text-sky-800'>Borrowed By:</p>

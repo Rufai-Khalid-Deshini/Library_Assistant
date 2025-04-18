@@ -53,7 +53,7 @@ const Signup = () => {
         }
 
         axios
-            .post("http://localhost:5555/users", info)
+            .post("https://lib-backend-i000.onrender.com/users", info)
             .then((res) => {
                 setSnackar({
                     open: true,

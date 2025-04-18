@@ -14,7 +14,7 @@ const BookDisplay = (props) => {
             <div className='flex flex-row items-center'>
                 <img src={`http://localhost:5555/uploads/${props.image}`} alt={props.title} className='w-20 h-24 mr-2' />
                 <div>
-                    <h2 className='font-bold text-blue-800'>{props.title}</h2>
+                    <h2 className='font-bold text-blue-800 capitalize'>{props.title}</h2>
                     <p><span className='font-bold'>Author:</span> {props.author}</p>
                     <p><span className='font-bold'>Category:</span> {props.category}</p>
                     {props.instock === 0 && <p className='absolute right-2'>Out of stock</p>}
