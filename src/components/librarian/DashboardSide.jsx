@@ -12,13 +12,13 @@ const DashboardSide = () => {
 
     useEffect(() => {
         axios
-            .get('http://localhost:5555/users/me', { withCredentials: true})
+            .get('https://lib-backend-i000.onrender.com/users/me', { withCredentials: true})
             .then((res) => {
                 const data = {
                     id: res.data.user.id
                 }
                 axios
-                    .post('http://localhost:5555/users/get-info', data)
+                    .post('https://lib-backend-i000.onrender.com/users/get-info', data)
                     .then(res => {
                         setUser(res.data);
                     })
@@ -27,7 +27,7 @@ const DashboardSide = () => {
 
     const logout = async () => {
         axios
-            .post('http://localhost:5555/users/logout', {}, { withCredentials: true })
+            .post('https://lib-backend-i000.onrender.com/users/logout', {}, { withCredentials: true })
             .then(res => {
                 location.href = "/";
             });
@@ -58,7 +58,7 @@ const DashboardSide = () => {
             {user.picture && (
                 <>
                     <div className='flex flex-col items-center justify-center gap-2 absolute bottom-28'>
-                        <img src={`http://localhost:5555/pictures/${user.picture}`} className='flex flex-col items-center justify-center text-blue-500 rounded-lg w-16 h-20 outline-1 outline shadow-md shadow-blue-300' style={{ objectFit: "cover" }} />
+                        <img src={`https://lib-backend-i000.onrender.com/pictures/${user.picture}`} className='flex flex-col items-center justify-center text-blue-500 rounded-lg w-16 h-20 outline-1 outline shadow-md shadow-blue-300' style={{ objectFit: "cover" }} />
                         <p className='text-sm font-bold text-slate-500 line-clamp-1'>{user.fullname}</p>
                     </div>
                 </>

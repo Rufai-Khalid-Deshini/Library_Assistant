@@ -12,7 +12,7 @@ const BookDisplay = (props) => {
     return (
         <div key={props._id} style={{ display: props.ye}} className='flex flex-row items-center justify-between border border-solid border-slate-700 my-3 mx-auto rounded w-11/12 shadow-md hover:shadow-slate-400 relative'>
             <div className='flex flex-row items-center'>
-                <img src={`http://localhost:5555/uploads/${props.image}`} alt={props.title} className='w-20 h-24 mr-2' />
+                <img src={`https://lib-backend-i000.onrender.com/uploads/${props.image}`} alt={props.title} className='w-20 h-24 mr-2' />
                 <div>
                     <h2 className='font-bold text-blue-800 capitalize'>{props.title}</h2>
                     <p><span className='font-bold'>Author:</span> {props.author}</p>
