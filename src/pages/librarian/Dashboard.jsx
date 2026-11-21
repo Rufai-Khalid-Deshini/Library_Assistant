@@ -29,8 +29,9 @@ const Dashboard = () => {
                         }
                     })
             })
-            .catch(() => {
+            .catch(err => {
                 alert("Something went wrong. Kindly try relogging in and try again.");
+                console.log(err);
                 location.href = "/";
             })
             .finally(() => {
