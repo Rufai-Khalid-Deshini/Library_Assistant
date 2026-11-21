@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Loading from '../components/Loading';
 import SnackbarComponent from '../components/SnackbarComponent';
@@ -20,6 +20,8 @@ const Login = () => {
     const handleClose = () => {
         setSnackar({...snackbar, open: false})
     }
+
+    const navigate = useNavigate();
 
     const login = () => {
         if(email.length === 0 || password.length === 0) {
@@ -44,7 +46,7 @@ const Login = () => {
                     })
                     localStorage.setItem("id", res.data._id);
                     setTimeout(() => {
-                        location.href = "/admin/dashboard";
+                        navigate("/admin/dashboard");
                     }, 2000)
                 }else {
                     setSnackar({
@@ -52,9 +54,10 @@ const Login = () => {
                         message: "Login successful",
                         severity: "success"
                     })
+                    console.log(res.data)
                     localStorage.setItem("id", res.data._id);
                     setTimeout(() => {
-                        location.href = "/";
+                        navigate("/");
                     }, 2000)
                 }
                 setLoading(false);
