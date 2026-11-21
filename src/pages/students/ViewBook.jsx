@@ -46,7 +46,7 @@ const ViewBook = () => {
         setLoading(true);
 
         axios
-            .get('https://lib-backend-i000.onrender.com/users/me', { withCredentials: true})
+            .get(`https://lib-backend-i000.onrender.com/users/me/${localStorage.getItem("id")}`, { withCredentials: true})
             .then(res => {
                 setUserId(res.data.user.id);
             })

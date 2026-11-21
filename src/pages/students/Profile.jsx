@@ -27,16 +27,16 @@ const Profile = () => {
 
     useEffect(() => {
         axios
-            .get('https://lib-backend-i000.onrender.com/users/me', { withCredentials: true})
+            .get(`https://lib-backend-i000.onrender.com/users/me/${localStorage.getItem("id")}`, { withCredentials: true})
             .then((res) => {
-                const data = {
-                    id: res.data.user.id
-                }
-                axios
-                    .post('https://lib-backend-i000.onrender.com/users/get-info', data)
-                    .then(res => {
-                        setUser(res.data);
-                    })
+                // const data = {
+                //     id: res.data.user.id
+                // }
+                // axios
+                //     .post('https://lib-backend-i000.onrender.com/users/get-info', data)
+                //     .then(res => {
+                //         setUser(res.data);
+                //     })
                 setVerified(true);
             })
     }, []);
