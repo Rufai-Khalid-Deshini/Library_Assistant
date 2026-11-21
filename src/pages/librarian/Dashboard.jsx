@@ -19,7 +19,7 @@ const Dashboard = () => {
             .get('https://lib-backend-i000.onrender.com/users/me', { withCredentials: true})
             .then((res) => {
                 const data = {
-                    id: res.data.user.id
+                    id: localStorage.getItem("id")
                 }
                 axios
                     .post('https://lib-backend-i000.onrender.com/users/get-info', data)
@@ -31,7 +31,6 @@ const Dashboard = () => {
                     })
             })
             .catch(err => {
-                console.log(err);
                 alert("Something went wrong. Kindly try relogging in and try again.");
                 navigation("/");
             })

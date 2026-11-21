@@ -42,6 +42,7 @@ const Login = () => {
                         message: "Login successful",
                         severity: "success"
                     })
+                    localStorage.setItem("id", res.data._id);
                     setTimeout(() => {
                         location.href = "/admin/dashboard";
                     }, 2000)
@@ -51,6 +52,7 @@ const Login = () => {
                         message: "Login successful",
                         severity: "success"
                     })
+                    localStorage.setItem("id", res.data._id);
                     setTimeout(() => {
                         location.href = "/";
                     }, 2000)
