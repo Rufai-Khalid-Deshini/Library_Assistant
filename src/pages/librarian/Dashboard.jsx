@@ -16,29 +16,44 @@ const Dashboard = () => {
     useEffect(() => {
         setLoading(true);
         axios
-            .get('https://lib-backend-i000.onrender.com/users/me', { withCredentials: true})
-            .then((res) => {
-                const data = {
-                    id: localStorage.getItem("id")
+            .get(`https://lib-backend-i000.onrender.com/users/me/${localStorage.getItem("id")}`, { withCredentials: true})
+            .then(res => {
+                if(res.data.role != "admin") {
+                    alert("Access denied");
+                    navigation("/");
                 }
-                console.log("Data: " + data);
-                axios
-                    .post('https://lib-backend-i000.onrender.com/users/get-info', data)
-                    .then(res => {
-                        if(res.data.role != "admin") {
-                            alert("Access denied");
-                            location.href = '/';
-                        }
-                        console.log("IsAdmin: " + res.data);
-                    })
+
+                setLoading(false);
             })
             .catch(err => {
                 alert("Something went wrong. Kindly try relogging in and try again.");
                 navigation("/");
             })
-            .finally(() => {
-                setLoading(false);
+
+
+        // old code before the pathetic approach to local storage
+        /* axios
+            .get('https://lib-backend-i000.onrender.com/users/me', { withCredentials: true})
+            .then((res) => {
+                const data = {
+                    id: localStorage.getItem("id")
+                }
+                
+                axios
+                    .post('https://lib-backend-i000.onrender.com/users/get-info', data)
+                    .then(res => {
+                        if(res.data.role != "admin") {
+                            alert("Access denied");
+                            navigation("/");
+                        }
+
+                        setLoading(false);
+                    })
             })
+            .catch(err => {
+                alert("Something went wrong. Kindly try relogging in and try again.");
+                navigation("/");
+            }) */
     }, []);
 
     return (
