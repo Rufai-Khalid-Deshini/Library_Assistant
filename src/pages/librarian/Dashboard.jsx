@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect } from 'react'
 import DashboardSide from '../../components/librarian/DashboardSide';
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { MdOutlinePending, MdOutlinePendingActions } from 'react-icons/md';
 import { BiBookAdd } from 'react-icons/bi';
 import { CiViewList } from 'react-icons/ci';
@@ -11,6 +11,7 @@ import Loading from '../../components/Loading';
 const Dashboard = () => {
 
     const [loading, setLoading] = useState(false);
+    const navigation = useNavigate();
 
     useEffect(() => {
         setLoading(true);
@@ -30,9 +31,9 @@ const Dashboard = () => {
                     })
             })
             .catch(err => {
-                alert("Something went wrong. Kindly try relogging in and try again.");
                 console.log(err);
-                location.href = "/";
+                alert("Something went wrong. Kindly try relogging in and try again.");
+                navigation("/");
             })
             .finally(() => {
                 setLoading(false);
