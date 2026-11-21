@@ -21,6 +21,7 @@ const Dashboard = () => {
                 const data = {
                     id: localStorage.getItem("id")
                 }
+                console.log("Data: " + data);
                 axios
                     .post('https://lib-backend-i000.onrender.com/users/get-info', data)
                     .then(res => {
@@ -28,6 +29,7 @@ const Dashboard = () => {
                             alert("Access denied");
                             location.href = '/';
                         }
+                        console.log("IsAdmin: " + res.data);
                     })
             })
             .catch(err => {
