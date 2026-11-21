@@ -44,7 +44,7 @@ const Login = () => {
                         message: "Login successful",
                         severity: "success"
                     })
-                    console.log(res.data)
+                    console.log("Data sent: " + res.data)
                     localStorage.setItem("id", res.data._id);
                     setTimeout(() => {
                         navigate("/admin/dashboard");
